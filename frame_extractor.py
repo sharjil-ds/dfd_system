@@ -45,8 +45,8 @@ def process_videos(input_dir, output_dir, fps=1):
 
 if __name__ == "__main__":
     # Customize these paths
-    INPUT_DIR = "dataset/real"   # or "dataset/fake"
-    OUTPUT_DIR = "extracted_frames/real"
+    INPUT_DIR = "dataset/fake"   # or "dataset/fake"
+    OUTPUT_DIR = "extracted_frames/fake"
     FPS = 1  # Extract 1 frame per second
 
     process_videos(INPUT_DIR, OUTPUT_DIR, fps=FPS)
