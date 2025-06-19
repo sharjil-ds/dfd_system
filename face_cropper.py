@@ -50,7 +50,7 @@ def process_frames(input_dir, output_dir):
                 cv2.imwrite(save_path, face)
 
 if __name__ == "__main__":
-    INPUT_DIR = "extracted_frames/fake"    # or fake
-    OUTPUT_DIR = "cropped_faces/fake"
+    INPUT_DIR = "extracted_frames/real"    # or fake
+    OUTPUT_DIR = "cropped_faces/real"
 
     process_frames(INPUT_DIR, OUTPUT_DIR)

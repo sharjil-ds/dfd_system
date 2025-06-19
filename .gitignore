@@ -3,3 +3,4 @@ extracted_frames
 venv
 .idea
 cropped_faces
+dataset_faces
