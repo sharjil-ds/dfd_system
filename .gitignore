@@ -5,3 +5,4 @@ venv
 cropped_faces
 dataset_faces
 best_model.pth
+efficientnet_b0_deepfake.pt
