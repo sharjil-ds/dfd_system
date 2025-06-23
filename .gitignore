@@ -4,3 +4,4 @@ venv
 .idea
 cropped_faces
 dataset_faces
+best_model.pth
