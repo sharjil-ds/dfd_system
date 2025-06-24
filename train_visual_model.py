@@ -27,8 +27,17 @@ transform = transforms.Compose([
 # =============== Load Data =================
 def get_loader(split):
     path = os.path.join(DATASET_DIR, split)
+
+    # Force correct label mapping: fake=0, real=1
+    class_to_idx = {"fake": 0, "real": 1}
+
     dataset = datasets.ImageFolder(path, transform=transform)
-    return DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=(split=='train'), num_workers=NUM_WORKERS), dataset
+    dataset.class_to_idx = class_to_idx  # override the default mapping
+
+    print(f"[{split}] class_to_idx: {dataset.class_to_idx}")  # debug check
+
+    loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=(split == 'train'), num_workers=NUM_WORKERS)
+    return loader, dataset
 
 train_loader, train_data = get_loader("train")
 val_loader, val_data = get_loader("val")
@@ -77,6 +86,7 @@ def train():
             torch.save(model.state_dict(), "best_model.pth")
             print("✅ Best model saved!")
 
+# ============== Evaluation =================
 def evaluate(loader, split="Test"):
     model.eval()
     all_preds, all_labels = [], []
@@ -96,10 +106,11 @@ def evaluate(loader, split="Test"):
     print(f"{split} Acc: {acc:.4f}, Precision: {precision:.4f}, Recall: {recall:.4f}")
     print(f"{split} Confusion Matrix:\n{cm}")
     return acc
+
 # ===========================================
 
 if __name__ == "__main__":
-    print(f"Using device: {DEVICE}")
+    print(f"🖥️ Using device: {DEVICE}")
     train()
     print("🎯 Testing best model...")
     model.load_state_dict(torch.load("best_model.pth"))
