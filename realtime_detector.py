@@ -61,11 +61,11 @@ def predict_webcam(threshold=0.5, window_size=15):
 
                 avg_score = np.mean(predictions)
                 if avg_score >= threshold:
-                    label = f"Fake ({avg_score:.2f})"
-                    color = (0, 0, 255)
-                else:
                     label = f"Real ({avg_score:.2f})"
                     color = (0, 255, 0)
+                else:
+                    label = f"Fake ({avg_score:.2f})"
+                    color = (0, 0, 255)
 
                 cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
 
