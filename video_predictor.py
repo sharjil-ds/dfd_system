@@ -96,5 +96,5 @@ def predict_video(video_path, conf_thresh=0.3, real_threshold=0.80):
 # --------------------- Entry point ---------------------
 
 if __name__ == "__main__":
-    video_path = "dataset/real/01__exit_phone_room.mp4"  # Replace with your test video path
+    video_path = "model_testing/demo_test_video.mp4"  # Replace with your test video path
     predict_video(video_path)

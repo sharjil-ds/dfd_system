@@ -4,5 +4,6 @@ venv
 .idea
 cropped_faces
 dataset_faces
+debug_faces
 best_model.pth
 efficientnet_b0_deepfake.pt
